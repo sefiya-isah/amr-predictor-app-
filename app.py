@@ -1,8 +1,10 @@
 
 import streamlit as st
-import joblib
+import pandas as pd
+import joblib as jl 
 import numpy as np
-
+import seaborn as sns
+import sklearn as sk
 # Load the trained SVM model
 model = joblib.load('amr_svm_model.pkl')
 
