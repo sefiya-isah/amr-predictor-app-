@@ -1,12 +1,13 @@
-
 import streamlit as st
 import pandas as pd
-import joblib as jl 
+import joblib as jl
 import numpy as np
-import seaborn as sns
-import sklearn as sk
+
 # Load the trained SVM model
-model = joblib.load('amr_svm_model.pkl')
+try:
+    model = jl.load('amr_svm_model.pkl')
+except Exception as e:
+    st.error("Failed to load the model. Please check the model file.")
 
 st.title("🔬 AMR Prediction App")
 st.write("Predict resistance to Ciprofloxacin and Augmentin")
@@ -19,12 +20,13 @@ organism_encoded = st.selectbox("Organism", options=[("Escherichia coli", 0), ("
 
 # Predict button
 if st.button("Predict"):
-    input_data = np.array([[imipenem, gentamicin, ceftazidime, organism_encoded]])
-    prediction = model.predict(input_data)
-    cip, aug = prediction[0]
-
-    result_cip = "Resistant" if cip == 1 else "Susceptible"
-    result_aug = "Resistant" if aug == 1 else "Susceptible"
-
-    st.success(f"Ciprofloxacin: {result_cip}")
-    st.success(f"Augmentin: {result_aug}")
+    try:
+        input_data = np.array([[imipenem, gentamicin, ceftazidime, organism_encoded]])
+        prediction = model.predict(input_data)
+        cip, aug = prediction[0]
+        result_cip = "Resistant" if cip == 1 else "Susceptible"
+        result_aug = "Resistant" if aug == 1 else "Susceptible"
+        st.success(f"Ciprofloxacin: {result_cip}")
+        st.success(f"Augmentin: {result_aug}")
+    except Exception as e:
+        st.error("Failed to make prediction. Please check the input values.")
