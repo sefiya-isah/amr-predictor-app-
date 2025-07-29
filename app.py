@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import joblib as jl
 import numpy as np
 
 # Load the trained SVM model
