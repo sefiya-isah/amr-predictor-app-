@@ -30,3 +30,4 @@ if st.button("Predict"):
     except Exception as e:
         st.error("Failed to make prediction. Please check the input values.")
 # redeploy trigger 🌟
+trigger redeploy
