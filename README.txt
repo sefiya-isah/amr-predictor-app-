@@ -1,0 +1,1 @@
+ADUSTECH Antimicrobial Predictor App\nContributors: Mujahid Nura, Abdulwahid Isah Adamu, Sefiya Isah\n
