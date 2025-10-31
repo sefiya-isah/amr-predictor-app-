@@ -1,3 +1,5 @@
+import os
+os.system('pip install joblib scikit-learn pandas numpy streamlit')
 # app.py
 import streamlit as st
 import joblib
